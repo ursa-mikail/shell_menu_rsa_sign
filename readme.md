@@ -182,16 +182,18 @@ PRIVATE EXPONENT: 4cde4bb56e6a701c3340354e64468e10a9bd61e81725c1d8bbd8f3237654d4
 
 </pre>
 
-##Padding the hash value
-    - hash value (20 byte in case of SHA1) is extended to RSA key size by prefixing padding.
-    - Default padding scheme in openssl is PKCS1.
-    - PKCS#1v1.5 padding scheme: 00||01||PS||00||T||H
-    - PS: Octet string with FF such that length of message is equal to key size.
-    - T: Identifier of signature scheme (Each scheme has its MAGIC bytes).
-    - H: Hash value of the message.
-    
+## Padding the hash value
+
+- Hash value (20 bytes in case of SHA1) is extended to RSA key size by prefixing padding.
+- Default padding scheme in OpenSSL is PKCS1.
+- PKCS#1v1.5 padding scheme: `00||01||PS||00||T||H`
+  - PS: Octet string with `FF` such that the length of the message is equal to the key size.
+  - T: Identifier of the signature scheme (each scheme has its MAGIC bytes).
+  - H: Hash value of the message.
+
 ### PKCS#1v1.5 padding scheme for SHA1:
-    ![PKCS1 #1.5 padding](pkcs1_padding.png \"PKCS1 #1.5 padding\")]
+![PKCS1 #1.5 padding](./pkcs1_padding.png "PKCS1 #1.5 padding")
+
 
 <pre>
 =======================================================================
